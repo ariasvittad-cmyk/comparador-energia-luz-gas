@@ -44,26 +44,25 @@ export default function PreguntasSinFactura() {
         {/* Opciones de compañías */}
 
 {pregunta.tipo === "companias" && (
-  <div className="grid grid-cols-4 gap-6 p-10">
+  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 p-4 md:p-10">
 
     {pregunta.opciones?.map((opcion, index) => (
 
       <div
   key={index}
   onClick={() => setRespuesta(opcion)}
-  className={`border rounded-lg h-52 flex flex-col items-center justify-center cursor-pointer transition
-  ${
-    respuesta === opcion
-      ? "border-blue-500 border-2"
-      : "hover:border-red-500"
-  }`}
+  className={`relative border rounded-xl h-44 md:h-52 flex flex-col items-center justify-between p-3 cursor-pointer transition ${
+  respuesta === opcion
+    ? "border-blue-500 border-2"
+    : "hover:border-red-500"
+}`}
 >
 
         <div
-  className={`w-10 h-10 rounded-full self-start ml-4 mt-4 border-[3px] flex items-center justify-center transition-all ${
+  className={`absolute top-3 right-3 w-7 h-7 md:w-10 md:h-10 rounded-full border-[3px] flex items-center justify-center transition-all
     respuesta === opcion
-      ? "border-blue-500"
-      : "border-gray-300"
+      ? "border-blue-400"
+      : "border-gray-200"
   }`}
 >
   {respuesta === opcion && (
@@ -93,13 +92,13 @@ export default function PreguntasSinFactura() {
         : "/logo/otras.png"
     }
     alt={opcion}
-    width={120}
-    height={60}
-    className="object-contain"
-  />
+    width={200}
+height={200}
+className="object-contain max-h-12 md:max-h-16"
+/>
 </div>
 
-        <p className="mb-6 text-xl">
+        <p className="mt-2 text-sm md:text-lg font-semibold text-center leading-tight px-2">
           {opcion}
         </p>
 
@@ -148,8 +147,8 @@ export default function PreguntasSinFactura() {
   <Image
     src="/iconos/reloj.png"
     alt="Reloj"
-    width={90}
-    height={80}
+    width={60}
+    height={50}
   />
 )}
 </div>
