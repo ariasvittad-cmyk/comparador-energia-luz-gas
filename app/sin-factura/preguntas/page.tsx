@@ -30,7 +30,7 @@ export default function PreguntasSinFactura() {
 
         {/* Título */}
 
-        <h1 className="text-center text-red-500 text-5xl mt-8 font-bold">
+        <h1 className="text-center text-red-500 text-4xl md:text-5xl mt-8 font-bold leading-tight">
   {pregunta.titulo}
 </h1>
 
@@ -175,19 +175,19 @@ className="object-contain w-20 h-20 md:w-24 md:h-24"
   </div>
 )}
 {pregunta.tipo === "si-no" && (
-  <div className="grid grid-cols-2 gap-8 p-10">
+  <div className="grid grid-cols-2 gap-3 p-4 md:gap-8 md:p-10">
     {pregunta.opciones?.map((opcion, index) => (
       <div
         key={index}
         onClick={() => setRespuesta(opcion)}
-        className={`border rounded-lg h-60 flex flex-col items-center justify-center cursor-pointer transition ${
+        className={`border rounded-lg h-52 flex flex-col items-center justify-center cursor-pointer transition ${
           respuesta === opcion
             ? "border-blue-500 border-2"
             : "hover:border-red-500"
         }`}
       >
         <div
-  className={`w-10 h-10 rounded-full self-start ml-4 mt-4 border-[3px] flex items-center justify-center transition-all ${
+  className={`w-10 h-10 min-w-[40px] min-h-[40px] rounded-full self-start ml-4 mt-4 border-[3px] flex items-center justify-center shrink-0 transition-all ${
     respuesta === opcion
       ? "border-blue-500"
       : "border-gray-300"
@@ -202,12 +202,12 @@ className="object-contain w-20 h-20 md:w-24 md:h-24"
   <Image
     src={opcion === "SI" ? "/iconos/gas-si.png" : "/iconos/gas-no.png"}
     alt={opcion}
-    width={110}
+    width={80}
     height={110}
   />
 </div>
 
-        <p className="text-4xl text-black font-semibold">
+        <p className="text-2xl md:text-4xl text-black font-semibold">
   {opcion}
 </p>
       </div>
@@ -221,7 +221,7 @@ className="object-contain w-20 h-20 md:w-24 md:h-24"
       placeholder={pregunta.placeholder}
       value={respuesta}
       onChange={(e) => setRespuesta(e.target.value)}
-      className="w-full border-2 border-blue-300 rounded-lg p-5 text-2xl focus:outline-none focus:border-blue-500"
+      className="w-full border-2 border-blue-300 rounded-lg p-5 text-2xl text-black placeholder:text-gray-400 focus:outline-none focus:border-blue-500"
     />
 
     <p className="text-black mt-3">
@@ -235,15 +235,23 @@ className="object-contain w-20 h-20 md:w-24 md:h-24"
       <div
         key={index}
         onClick={() => setRespuesta(opcion)}
-        className={`border rounded-lg h-36 flex items-center justify-center cursor-pointer transition ${
+        className={`border rounded-2xl h-28 md:h-36 flex items-center justify-center cursor-pointer transition ${
           respuesta === opcion
             ? "border-blue-500 border-2"
             : "hover:border-red-500"
         }`}
       >
-        <div className="text-3xl">
-          {opcion === "WhatsApp" ? "💬 WhatsApp" : "☎️ Llamada"}
-        </div>
+        <div className="flex flex-col items-center justify-center gap-3">
+
+  <div className="text-5xl">
+    {opcion === "WhatsApp" ? "💬" : "☎️"}
+  </div>
+
+  <p className="text-xl font-semibold text-black">
+    {opcion}
+  </p>
+
+</div>
       </div>
     ))}
   </div>
@@ -255,7 +263,7 @@ className="object-contain w-20 h-20 md:w-24 md:h-24"
       placeholder={pregunta.placeholder}
       value={respuesta}
       onChange={(e) => setRespuesta(e.target.value)}
-      className="w-full border-2 border-blue-300 rounded-lg p-5 text-2xl focus:outline-none focus:border-blue-500"
+      className="w-full border-2 border-blue-300 rounded-lg p-5 text-2xl text-black placeholder:text-gray-400 focus:outline-none focus:border-blue-500"
     />
 
     <p className="text-black mt-3">
