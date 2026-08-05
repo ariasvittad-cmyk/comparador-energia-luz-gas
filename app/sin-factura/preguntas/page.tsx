@@ -51,15 +51,29 @@ export default function PreguntasSinFactura() {
       <div
   key={index}
   onClick={() => setRespuesta(opcion)}
-  className={`relative border rounded-xl h-44 md:h-52 flex flex-col items-center justify-between p-3 cursor-pointer transition ${
+  className={`relative
+aspect-square
+w-full
+max-w-[170px]
+mx-auto
+border
+rounded-2xl
+bg-white
+p-3
+flex flex-col
+items-center
+justify-between
+cursor-pointer
+transition-all
+${
   respuesta === opcion
-    ? "border-blue-500 border-2"
-    : "hover:border-red-500"
+    ? "border-blue-500 border-2 shadow-lg"
+    : "border-gray-300 hover:border-red-500 hover:shadow-md"
 }`}
 >
 
         <div
-  className={`absolute top-3 right-3 w-7 h-7 md:w-10 md:h-10 rounded-full border-[3px] flex items-center justify-center transition-all
+  className={`absolute top-3 right-3 w-7 h-7 md:w-10 md:h-10 rounded-full border-[3px] flex items-center justify-center transition-all ${
     respuesta === opcion
       ? "border-blue-400"
       : "border-gray-200"
@@ -92,13 +106,13 @@ export default function PreguntasSinFactura() {
         : "/logo/otras.png"
     }
     alt={opcion}
-    width={200}
-height={200}
-className="object-contain max-h-12 md:max-h-16"
+    width={90}
+height={90}
+className="object-contain w-20 h-20 md:w-24 md:h-24"
 />
 </div>
 
-        <p className="mt-2 text-sm md:text-lg font-semibold text-center leading-tight px-2">
+        <p className="text-black text-sm md:text-base font-semibold text-center leading-tight">
           {opcion}
         </p>
 
@@ -109,7 +123,7 @@ className="object-contain max-h-12 md:max-h-16"
   </div>
 )}
 {pregunta.tipo === "tarjetas" && (
-  <div className="grid grid-cols-4 gap-6 p-10">
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 md:p-10">
     {pregunta.opciones?.map((opcion, index) => (
       <div
         key={index}
