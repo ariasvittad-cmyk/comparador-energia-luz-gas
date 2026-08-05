@@ -21,13 +21,13 @@ export default function Home() {
 
           </span>
 
-          <h1 className="mt-6 text-2xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
+          <h1 className="mt-5 text-[25px] sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
   ELIGE CÓMO QUIERES
   <br />
   COMPARAR TU FACTURA
 </h1>
 
-          <p className="mt-4 text-xs sm:text-base lg:text-xl text-gray-800 max-w-3xl mx-auto leading-snug px-2">
+          <p className="mt-4 text-sm sm:text-base lg:text-xl text-gray-800 max-w-3xl mx-auto leading-snug px-2">
 
             Deja que nosotros hagamos el trabajo.
             Comparamos tu tarifa actual con más de 30 compañías
@@ -39,11 +39,11 @@ export default function Home() {
 
         {/* Tarjetas */}
 
-<div className="mt-8 grid grid-cols-2 gap-2 items-stretch max-w-4xl mx-auto">
+<div className="mt-12 grid grid-cols-2 gap-4 items-stretch max-w-4xl mx-auto">
 
   {/* Con factura */}
 
-<div className="relative flex flex-col bg-white rounded-3xl shadow-xl border border-gray-200 p-2 md:p-8 transition duration-300 hover:-translate-y-2 hover:shadow-2xl">
+<div className="relative flex flex-col bg-white rounded-3xl shadow-xl border border-gray-200 p-3 md:p-8 transition duration-300 hover:-translate-y-2 hover:shadow-2xl">
 
   <div className="absolute -top-5 left-1/2 -translate-x-1/2">
     <span className="bg-black text-white px-4 py-1 rounded-full text-[9px] md:text-sm font-bold shadow-lg whitespace-nowrap">
@@ -51,7 +51,7 @@ export default function Home() {
     </span>
   </div>
 
-  <div className="w-7 h-7 md:w-20 md:h-20 rounded-3xl bg-red-50 flex items-center justify-center mx-auto text-2xl md:text-5xl">
+  <div className="w-9 h-9 md:w-20 md:h-20 rounded-3xl bg-red-50 flex items-center justify-center mx-auto text-2xl md:text-5xl">
     📄
   </div>
 
@@ -79,9 +79,9 @@ export default function Home() {
 
 {/* Sin factura */}
 
-<div className="flex flex-col bg-white rounded-3xl shadow-xl border border-gray-200 p-2 md:p-8 transition duration-300 hover:-translate-y-2 hover:shadow-2xl">
+<div className="flex flex-col bg-white rounded-3xl shadow-xl border border-gray-200 p-3 md:p-8 transition duration-300 hover:-translate-y-2 hover:shadow-2xl">
 
-  <div className="w-7 h-7 md:w-20 md:h-20 rounded-3xl bg-red-50 flex items-center justify-center mx-auto text-2xl md:text-5xl">
+  <div className="w-9 h-9 md:w-20 md:h-20 rounded-3xl bg-red-50 flex items-center justify-center mx-auto text-2xl md:text-5xl">
     📊
   </div>
 
@@ -95,7 +95,7 @@ export default function Home() {
 
   <ul className="mt-2 space-y-2 text-xs md:text-base text-gray-700 flex-1">
     <li>✅ Proceso rápido</li>
-    <li>✅ Sin necesidad de factura</li>
+    <li>✅ Sin factura</li>
     <li>✅ Estimación personalizada</li>
   </ul>
 
