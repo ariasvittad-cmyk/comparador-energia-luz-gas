@@ -9,7 +9,7 @@ export default function Home() {
           "linear-gradient(to bottom, #C27B7B 0%, #C27B7B 48%, #E8C7A8 50%, #F7EFCB 52%, #F7EFCB 100%)",
       }}
     >
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-4 md:py-20">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 pt-6 pb-10 md:py-20">
 
         {/* Encabezado */}
 
@@ -21,13 +21,13 @@ export default function Home() {
 
           </span>
 
-          <h1 className="mt-2 text-2xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
+          <h1 className="mt-6 text-2xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
   ELIGE CÓMO QUIERES
   <br />
   COMPARAR TU FACTURA
 </h1>
 
-          <p className="mt-2 text-xs sm:text-base lg:text-xl text-gray-800 max-w-3xl mx-auto leading-snug px-2">
+          <p className="mt-4 text-xs sm:text-base lg:text-xl text-gray-800 max-w-3xl mx-auto leading-snug px-2">
 
             Deja que nosotros hagamos el trabajo.
             Comparamos tu tarifa actual con más de 30 compañías
@@ -39,7 +39,7 @@ export default function Home() {
 
         {/* Tarjetas */}
 
-<div className="mt-3 grid grid-cols-2 gap-2 items-stretch max-w-4xl mx-auto">
+<div className="mt-8 grid grid-cols-2 gap-2 items-stretch max-w-4xl mx-auto">
 
   {/* Con factura */}
 
@@ -111,7 +111,7 @@ export default function Home() {
 
 {/* Beneficios */}
 
-        <div className="mt-4 md:mt-16 grid grid-cols-3 gap-2 md:gap-8">
+        <div className="mt-8 md:mt-16 grid grid-cols-3 gap-2 md:gap-8">
 
           <div className="bg-white/70 backdrop-blur rounded-2xl p-2 md:p-6 text-center shadow-md">
 
