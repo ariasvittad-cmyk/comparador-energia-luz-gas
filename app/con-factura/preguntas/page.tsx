@@ -33,12 +33,12 @@ export default function PreguntasPage() {
 </h2>
 
 {"subtitulo" in pregunta && pregunta.subtitulo && (
-  <p className="text-center text-gray-500 text-lg mt-3">
-    {pregunta.subtitulo}
-  </p>
+  <p className="text-center text-black text-lg mt-3">
+  {pregunta.subtitulo}
+</p>
 )}
 
-<p className="text-center text-gray-500 mt-3 mb-8">
+<p className="text-center text-black mt-3 mb-8">
   Paso {paso + 1} de {preguntas.length}
 </p>
 
@@ -72,7 +72,7 @@ export default function PreguntasPage() {
     placeholder="Escribe tu nombre completo"
     value={respuesta}
     onChange={(e) => setRespuesta(e.target.value)}
-    className="w-full border rounded-lg p-4 text-lg"
+    className="w-full border rounded-lg p-4 text-lg text-black placeholder:text-gray-400"
   />
 )}
 
@@ -93,7 +93,7 @@ export default function PreguntasPage() {
     placeholder="Escribe aquí cualquier observación..."
     value={respuesta}
     onChange={(e) => setRespuesta(e.target.value)}
-    className="w-full border rounded-lg p-4 h-40 resize-none"
+    className="w-full border rounded-lg p-4 h-40 resize-none text-black placeholder:text-gray-400"
   />
 )}
 
@@ -109,7 +109,7 @@ export default function PreguntasPage() {
       className="mt-1 w-8 h-8"
     />
 
-    <span>
+    <span className="text-black">
       Al marcar esta casilla acepto la política de privacidad y acepto que me contacten para ofrecerme más información.
     </span>
   </label>

@@ -128,25 +128,49 @@ className="object-contain w-20 h-20 md:w-24 md:h-24"
       <div
         key={index}
         onClick={() => setRespuesta(opcion)}
-        className={`border rounded-lg h-52 flex flex-col items-center justify-center cursor-pointer transition ${
+        className={`border rounded-2xl
+h-40
+md:h-44
+w-full
+max-w-[170px]
+mx-auto
+flex flex-col
+items-center
+justify-center
+cursor-pointer
+transition ${
           respuesta === opcion
             ? "border-blue-500 border-2"
             : "hover:border-red-500"
         }`}
       >
         <div
-  className={`w-10 h-10 rounded-full self-start ml-4 mt-4 border-[3px] flex items-center justify-center transition-all ${
-    respuesta === opcion
-      ? "border-blue-500"
-      : "border-gray-300"
-  }`}
+  className={`self-start ml-3 mt-3
+w-[38px]
+h-[38px]
+min-w-[38px]
+min-h-[38px]
+max-w-[38px]
+max-h-[38px]
+rounded-full
+border-[3px]
+flex
+items-center
+justify-center
+flex-none
+transition-all
+${
+  respuesta === opcion
+    ? "border-blue-500"
+    : "border-gray-300"
+}`}
 >
   {respuesta === opcion && (
-    <div className="w-5 h-5 rounded-full bg-blue-500"></div>
+    <div className="w-[18px] h-[18px] rounded-full bg-blue-500"></div>
   )}
 </div>
 
-        <div className="flex-1 flex items-center justify-center text-6xl">
+        <div className="flex-1 flex items-center justify-center text-5xl">
   {pregunta.icono === "dinero" && "🪙"}
   {pregunta.icono === "factura" && "💶"}
   {pregunta.icono === "casa" && (
@@ -167,7 +191,7 @@ className="object-contain w-20 h-20 md:w-24 md:h-24"
 )}
 </div>
 
-        <p className="mb-6 text-xl text-center px-2 text-black font-medium">
+        <p className="mb-4 text-lg text-center px-2 text-black font-medium leading-tight">
   {opcion}
 </p>
       </div>
@@ -187,14 +211,14 @@ className="object-contain w-20 h-20 md:w-24 md:h-24"
         }`}
       >
         <div
-  className={`w-10 h-10 min-w-[40px] min-h-[40px] rounded-full self-start ml-4 mt-4 border-[3px] flex items-center justify-center shrink-0 transition-all ${
+  className={`w-10 h-10 aspect-square rounded-full self-start ml-4 mt-4 border-[3px] flex items-center justify-center flex-shrink-0 transition-all ${
     respuesta === opcion
       ? "border-blue-500"
       : "border-gray-300"
   }`}
 >
   {respuesta === opcion && (
-    <div className="w-5 h-5 rounded-full bg-blue-500"></div>
+    <div className="w-4 h-4 aspect-square rounded-full bg-blue-500"></div>
   )}
 </div>
 
