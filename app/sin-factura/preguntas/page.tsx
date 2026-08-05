@@ -37,9 +37,9 @@ export default function PreguntasSinFactura() {
         {/* Subtítulo */}
 
         {"subtitulo" in pregunta && (
-          <p className="text-center text-gray-500 text-2xl mt-3">
-            {pregunta.subtitulo}
-          </p>
+          <p className="text-center text-black text-2xl mt-3">
+  {pregunta.subtitulo}
+</p>
         )}
         {/* Opciones de compañías */}
 
@@ -167,9 +167,9 @@ className="object-contain w-20 h-20 md:w-24 md:h-24"
 )}
 </div>
 
-        <p className="mb-6 text-xl text-center px-2">
-          {opcion}
-        </p>
+        <p className="mb-6 text-xl text-center px-2 text-black font-medium">
+  {opcion}
+</p>
       </div>
     ))}
   </div>
@@ -207,9 +207,9 @@ className="object-contain w-20 h-20 md:w-24 md:h-24"
   />
 </div>
 
-        <p className="text-4xl">
-          {opcion}
-        </p>
+        <p className="text-4xl text-black font-semibold">
+  {opcion}
+</p>
       </div>
     ))}
   </div>
@@ -224,9 +224,9 @@ className="object-contain w-20 h-20 md:w-24 md:h-24"
       className="w-full border-2 border-blue-300 rounded-lg p-5 text-2xl focus:outline-none focus:border-blue-500"
     />
 
-    <p className="text-gray-500 mt-3">
-      Pulsa "→" para continuar
-    </p>
+    <p className="text-black mt-3">
+  Pulsa "→" para continuar
+</p>
   </div>
 )}
 {pregunta.tipo === "contacto" && (
@@ -258,9 +258,9 @@ className="object-contain w-20 h-20 md:w-24 md:h-24"
       className="w-full border-2 border-blue-300 rounded-lg p-5 text-2xl focus:outline-none focus:border-blue-500"
     />
 
-    <p className="text-gray-500 mt-3">
-      Pulsa "→" para continuar
-    </p>
+    <p className="text-black mt-3">
+  Pulsa "→" para continuar
+</p>
   </div>
 )}
 {pregunta.tipo === "checkbox" && (
@@ -281,7 +281,7 @@ className="object-contain w-20 h-20 md:w-24 md:h-24"
         className="w-6 h-6 mt-1"
       />
 
-      <span>
+      <span className="text-black">
         Al marcar esta casilla acepto la{" "}
         <a
           href="#"
