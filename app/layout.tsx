@@ -13,24 +13,30 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CRSL Comparador de Enegía",
-  description: "Comparamos tu tarifa actual y te decimos cuanto puedes ahorrar cada mes",
+  title: "CRSL Comparador de Energía",
+  description:
+    "Comparamos tu tarifa actual y te decimos cuánto puedes ahorrar cada mes.",
 
   icons: {
     icon: "/logo.png",
   },
 
   openGraph: {
-    title: "CRSL Comparador de Enegía",
-    description: "Comparamos tu tarifa actual y te decimos cuanto puedes ahorrar cada mes",
+    title: "CRSL Comparador de Energía",
+    description:
+      "Comparamos tu tarifa actual y te decimos cuánto puedes ahorrar cada mes.",
+    url: "https://cronosll-comparador-energia-luz-gas.vercel.app",
+    siteName: "CRSL Comparador de Energía",
     images: [
       {
-        url: "/logo.png",
+        url: "https://cronosll-comparador-energia-luz-gas.vercel.app/logo.png",
         width: 512,
         height: 512,
         alt: "CRSL Comparador de Energía",
       },
     ],
+    locale: "es_ES",
+    type: "website",
   },
 };
 
