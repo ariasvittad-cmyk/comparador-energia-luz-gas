@@ -26,7 +26,7 @@ export default function PreguntasPage() {
   </div>
 
 
-        <div className="p-10">
+        <div className="p-10 text-black">
 
          <h2 className="text-red-600 text-3xl font-bold text-center">
   {pregunta.titulo}
@@ -47,9 +47,9 @@ export default function PreguntasPage() {
   <>
     {pregunta.opciones?.map((opcion, index) => (
       <label
-        key={index}
-        className="flex items-center border rounded-lg p-4 mb-4 cursor-pointer hover:border-red-500"
-      >
+  key={index}
+  className="flex items-center border rounded-lg p-4 mb-4 cursor-pointer hover:border-red-500 text-black"
+>
         <input
           type="radio"
           name="respuesta"
@@ -72,7 +72,7 @@ export default function PreguntasPage() {
     placeholder="Escribe tu nombre completo"
     value={respuesta}
     onChange={(e) => setRespuesta(e.target.value)}
-    className="w-full border rounded-lg p-4 text-lg text-black placeholder:text-gray-400"
+    className="w-full border rounded-lg p-4 text-lg text-black placeholder:text-black"
   />
 )}
 
@@ -83,7 +83,7 @@ export default function PreguntasPage() {
     placeholder="Por ejemplo: 612345678"
     value={respuesta}
     onChange={(e) => setRespuesta(e.target.value)}
-    className="w-full border rounded-lg p-4 text-lg"
+    className="w-full border rounded-lg p-4 text-lg text-black placeholder:text-black"
   />
 )}
 
@@ -93,7 +93,7 @@ export default function PreguntasPage() {
     placeholder="Escribe aquí cualquier observación..."
     value={respuesta}
     onChange={(e) => setRespuesta(e.target.value)}
-    className="w-full border rounded-lg p-4 h-40 resize-none text-black placeholder:text-gray-400"
+    className="w-full border rounded-lg p-4 h-40 resize-none text-black placeholder:text-black"
   />
 )}
 
@@ -188,7 +188,7 @@ export default function PreguntasPage() {
 
           <div className="flex justify-center">
 
-            <div className="bg-gray-200 text-gray-600 text-xs rounded px-5 py-2 mt-6">
+            <div className="bg-gray-200 text-black text-xs rounded px-5 py-2 mt-6">
 
               {paso + 1} de {preguntas.length}
 
