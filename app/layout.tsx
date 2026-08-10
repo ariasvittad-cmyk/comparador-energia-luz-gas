@@ -25,13 +25,12 @@ export const metadata: Metadata = {
     title: "CRSL Comparador de Energía",
     description:
       "Comparamos tu tarifa actual y te decimos cuánto puedes ahorrar cada mes.",
-    url: "https://cronosll-comparador-energia-luz-gas.vercel.app",
     siteName: "CRSL Comparador de Energía",
     images: [
       {
         url: "https://cronosll-comparador-energia-luz-gas.vercel.app/logo.png",
-        width: 512,
-        height: 512,
+        width: 350,
+        height: 350,
         alt: "CRSL Comparador de Energía",
       },
     ],
