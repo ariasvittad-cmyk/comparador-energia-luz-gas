@@ -28,7 +28,7 @@ export default function PreguntasPage() {
 
         <div className="p-10 text-black">
 
-         <h2 className="text-red-600 text-3xl font-bold text-center">
+         <h2 className="text-red-600 text-[20px] font-bold text-center leading-tight">
   {pregunta.titulo}
 </h2>
 
@@ -69,10 +69,10 @@ export default function PreguntasPage() {
 {pregunta.tipo === "texto" && (
   <input
     type="text"
-    placeholder="Escribe tu nombre completo"
+    placeholder="Escribe tu nombre"
     value={respuesta}
     onChange={(e) => setRespuesta(e.target.value)}
-    className="w-full border rounded-lg p-4 text-lg text-black placeholder:text-black"
+    className="w-full border rounded-lg p-4 text-lg text-black placeholder:text-gray-500"
   />
 )}
 
@@ -83,7 +83,7 @@ export default function PreguntasPage() {
     placeholder="Por ejemplo: 612345678"
     value={respuesta}
     onChange={(e) => setRespuesta(e.target.value)}
-    className="w-full border rounded-lg p-4 text-lg text-black placeholder:text-black"
+    className="w-full border rounded-lg p-4 text-lg text-black placeholder:text-gray-500"
   />
 )}
 
@@ -110,7 +110,7 @@ export default function PreguntasPage() {
     />
 
     <span className="text-black">
-      Al marcar esta casilla acepto la política de privacidad y acepto que me contacten para ofrecerme más información.
+      Al marcar acepto la política de privacidad y acepto que me contacten para ofrecerme más información.
     </span>
   </label>
 )}

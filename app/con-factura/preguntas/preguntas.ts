@@ -29,7 +29,7 @@ export const preguntas = [
   {
   id: 4,
   titulo: "📞 Déjanos tu teléfono",
-  subtitulo: "Escribe tu teléfono real para poder hacerte llegar el estudio. Se te enviará por la vía solicitada.",
+  subtitulo: "Escribe tu teléfono para poder hacerte llegar el estudio. Se te enviará por la vía solicitada.",
   tipo: "telefono",
 },
 

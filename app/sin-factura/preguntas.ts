@@ -86,7 +86,7 @@ export const preguntas = [
     titulo: "👤 ¿Cómo te llamas?",
 
     tipo: "texto",
-    placeholder: "Nombre",
+    placeholder: "Escribe tu nombre",
   },
 
   {
@@ -108,7 +108,7 @@ export const preguntas = [
 
   {
     id: 10,
-    titulo: "Políticas de privacidad",
+    titulo: "",
     tipo: "checkbox",
   },
 ];

@@ -30,14 +30,14 @@ export default function PreguntasSinFactura() {
 
         {/* Título */}
 
-        <h1 className="text-center text-red-500 text-4xl md:text-5xl mt-8 font-bold leading-tight">
+        <h1 className="text-center text-red-500 text-[20px] font-bold leading-tight mt-8">
   {pregunta.titulo}
 </h1>
 
         {/* Subtítulo */}
 
         {"subtitulo" in pregunta && (
-          <p className="text-center text-black text-2xl mt-3">
+          <p className="text-center text-black text-x2 mt-2">
   {pregunta.subtitulo}
 </p>
         )}
