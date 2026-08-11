@@ -18,7 +18,7 @@ export default function SubirFactura() {
 
   const comprimirImagen = (archivo: File): Promise<File> => {
     return new Promise((resolve, reject) => {
-      const img = new Image();
+      const img = document.createElement("img");
 
       img.onload = () => {
         try {
