@@ -8,6 +8,27 @@ export default function SubirFactura() {
     const [archivos, setArchivos] = useState<File[]>([]);
 const inputRef = useRef<HTMLInputElement>(null);
 const router = useRouter();
+const convertirArchivoABase64 = (archivo: File): Promise<string> => {
+  return new Promise((resolve, reject) => {
+
+    const reader = new FileReader();
+
+    reader.readAsDataURL(archivo);
+
+    reader.onload = () => {
+
+      const resultado = reader.result as string;
+
+      const base64 = resultado.split(",")[1];
+
+      resolve(base64);
+    };
+
+    reader.onerror = (error) => {
+      reject(error);
+    };
+  });
+};
 
 const seleccionarArchivo = () => {
   inputRef.current?.click();
@@ -98,14 +119,41 @@ const cambiarArchivo = (e: React.ChangeEvent<HTMLInputElement>) => {
 
         {/* Botón */}
         <button
-  onClick={() => {
-    if (archivos.length === 0) {
-      alert("Debes subir una factura (PDF, JPG o PNG) para continuar.");
-      return;
-    }
+  onClick={async () => {
+
+  if (archivos.length === 0) {
+    alert("Debes subir una factura (PDF, JPG o PNG) para continuar.");
+    return;
+  }
+
+  try {
+
+    const archivo = archivos[0];
+
+    const base64 = await convertirArchivoABase64(archivo);
+
+    const factura = {
+      nombreArchivo: archivo.name,
+      tipoArchivo: archivo.type,
+      archivoBase64: base64,
+    };
+
+    sessionStorage.setItem(
+      "facturaCRSL",
+      JSON.stringify(factura)
+    );
 
     router.push("/con-factura/preguntas");
-  }}
+
+  } catch (error) {
+
+    console.error(error);
+
+    alert(
+      "No se pudo preparar la factura. Inténtalo nuevamente."
+    );
+  }
+}}
   className="w-full mt-8 bg-red-600 hover:bg-red-700 text-white py-4 rounded-xl font-semibold text-lg"
 >
   CONTINUAR →

@@ -9,6 +9,8 @@ export default function PreguntasSinFactura() {
   const [paso, setPaso] = useState(0);
   const router = useRouter();
   const [respuesta, setRespuesta] = useState("");
+  const [respuestas, setRespuestas] = useState<Record<number, string>>({});
+  const [enviando, setEnviando] = useState(false);
 
   const pregunta = preguntas[paso];
 
@@ -347,22 +349,90 @@ ${
 </button>
 
     <button
-  onClick={() => {
+  disabled={enviando}
+  onClick={async () => {
+
+    // 1. Comprobar que haya una respuesta
     if (!respuesta) {
       alert("Debes seleccionar una opción");
       return;
     }
 
+    // 2. Guardar la respuesta actual
+    const respuestasActualizadas = {
+      ...respuestas,
+      [paso]: respuesta,
+    };
+
+    setRespuestas(respuestasActualizadas);
+
+    // 3. Si todavía quedan preguntas,
+    // simplemente pasar a la siguiente
     if (paso < preguntas.length - 1) {
-  setPaso(paso + 1);
-  setRespuesta("");
-} else {
-  router.push("/sin-factura/enviado");
-}
+      setPaso(paso + 1);
+      setRespuesta("");
+      return;
+    }
+
+    // 4. AQUÍ ya estamos en la última pregunta.
+    // Bloqueamos el botón para evitar doble envío.
+    setEnviando(true);
+
+    // 5. Enviar todos los datos
+    try {
+      const response = await fetch("/api/enviar-cliente", {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+          tipo: "sin-factura",
+
+          respuestas: preguntas.map((pregunta, index) => ({
+            pregunta: pregunta.titulo,
+            respuesta: respuestasActualizadas[index] || "",
+          })),
+        }),
+      });
+
+      const resultado = await response.json();
+
+      // 6. Comprobar que el servidor respondió correctamente
+      if (!response.ok || !resultado.ok) {
+        throw new Error(
+          resultado.error || "No se pudieron enviar los datos"
+        );
+      }
+
+      // 7. Envío correcto
+      router.push("/sin-factura/enviado");
+
+    } catch (error) {
+
+      console.error("Error enviando datos:", error);
+
+      // Si hubo error, permitimos volver a intentar
+      setEnviando(false);
+
+      alert(
+        "No se pudieron enviar tus datos. Por favor, inténtalo nuevamente."
+      );
+    }
   }}
-  className="w-1/2 bg-red-600 hover:bg-red-700 text-white py-5 text-lg font-semibold border-l-2 border-black"
+
+  className={`w-1/2 text-white py-5 text-lg font-semibold border-l-2 border-black ${
+    enviando
+      ? "bg-gray-500 cursor-not-allowed"
+      : "bg-red-600 hover:bg-red-700"
+  }`}
 >
-  {paso === preguntas.length - 1 ? "ENVIAR" : "SEGUIR →"}
+  {paso === preguntas.length - 1
+  ? enviando
+    ? "ENVIANDO..."
+    : "ENVIAR"
+  : "SEGUIR →"}
 </button>
 
   </div>

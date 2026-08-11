@@ -6,9 +6,15 @@ import Image from "next/image";
 import { preguntas } from "./preguntas";
 
 export default function PreguntasPage() {
-  const [paso, setPaso] = useState(0);
-  const [respuesta, setRespuesta] = useState("");
-  const router = useRouter();
+const [paso, setPaso] = useState(0);
+const [respuesta, setRespuesta] = useState("");
+
+const [respuestas, setRespuestas] =
+  useState<Record<number, string>>({});
+
+const router = useRouter();
+
+const [enviando, setEnviando] = useState(false);
 
   const pregunta = preguntas[paso];
 
@@ -133,24 +139,161 @@ export default function PreguntasPage() {
               </button>
 
               <button
-                onClick={() => {
+              disabled={enviando}
+                onClick={async () => {
 
-                  if (!respuesta && pregunta.tipo !== "textarea") {
-  alert("Debes seleccionar una opción.");
-  return;
-}
+  // ==========================================
+  // GUARDAR LA RESPUESTA ACTUAL
+  // ==========================================
 
-                  if (paso < preguntas.length - 1) {
-  setPaso(paso + 1);
-  setRespuesta("");
-} else {
-  router.replace("/con-factura/enviado");
-}
+  if (!respuesta && pregunta.tipo !== "textarea") {
+    alert("Debes seleccionar una opción.");
+    return;
+  }
 
-                }}
-                className="w-1/2 bg-red-600 hover:bg-red-700 text-white py-4 font-semibold border border-black"
+  const respuestasActualizadas = {
+    ...respuestas,
+    [paso]: respuesta,
+  };
+
+  setRespuestas(respuestasActualizadas);
+
+  // ==========================================
+  // SI TODAVÍA QUEDAN PREGUNTAS
+  // ==========================================
+
+  if (paso < preguntas.length - 1) {
+
+    setPaso(paso + 1);
+    setRespuesta("");
+
+    return;
+  }
+
+  // ==========================================
+  // YA ESTAMOS EN LA ÚLTIMA PREGUNTA
+  // ==========================================
+
+  if (enviando) {
+    return;
+  }
+
+  setEnviando(true);
+
+  try {
+
+    // ==========================================
+    // RECUPERAR LA FACTURA
+    // ==========================================
+
+    const facturaGuardada =
+      sessionStorage.getItem("facturaCRSL");
+
+    if (!facturaGuardada) {
+
+      alert(
+        "No se encontró la factura. Por favor, vuelve a subirla."
+      );
+
+      setEnviando(false);
+
+      router.push("/con-factura/subir-factura");
+
+      return;
+    }
+
+    const factura = JSON.parse(facturaGuardada);
+
+    // ==========================================
+    // ENVIAR DATOS AL SERVIDOR
+    // ==========================================
+
+    const response = await fetch(
+      "/api/enviar-cliente",
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+
+          tipo: "con-factura",
+
+          respuestas: preguntas.map(
+            (pregunta, index) => ({
+              pregunta: pregunta.titulo,
+              respuesta:
+                respuestasActualizadas[index] || "",
+            })
+          ),
+
+          nombreArchivo:
+            factura.nombreArchivo,
+
+          tipoArchivo:
+            factura.tipoArchivo,
+
+          archivoBase64:
+            factura.archivoBase64,
+
+        }),
+      }
+    );
+
+    // ==========================================
+    // LEER RESPUESTA DEL SERVIDOR
+    // ==========================================
+
+    const resultado =
+      await response.json();
+
+    if (!response.ok || !resultado.ok) {
+
+      throw new Error(
+        resultado.error ||
+        "No se pudieron enviar los datos."
+      );
+    }
+
+    // ==========================================
+    // BORRAR FACTURA TEMPORAL
+    // ==========================================
+
+    sessionStorage.removeItem("facturaCRSL");
+
+    // ==========================================
+    // IR A PÁGINA DE CONFIRMACIÓN
+    // ==========================================
+
+    router.replace("/con-factura/enviado");
+
+  } catch (error) {
+
+    console.error(
+      "Error enviando CON FACTURA:",
+      error
+    );
+
+    setEnviando(false);
+
+    alert(
+      "No se pudieron enviar tus datos. Por favor, inténtalo nuevamente."
+    );
+  }
+}}
+                className={`w-1/2 text-white py-4 font-semibold border border-black ${
+  enviando
+    ? "bg-gray-500 cursor-not-allowed"
+    : "bg-red-600 hover:bg-red-700"
+}`}
               >
-                {paso === preguntas.length - 1 ? "ENVIAR" : "SIGUIENTE →"}
+                {paso === preguntas.length - 1
+  ? enviando
+    ? "ENVIANDO..."
+    : "ENVIAR"
+  : "SIGUIENTE →"}
               </button>
 
             </div>
