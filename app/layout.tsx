@@ -21,6 +21,10 @@ export const metadata: Metadata = {
     icon: "/logo.png",
   },
 
+  verification: {
+    google: "rhCWrEko4K7RKt91Rr0SN2mIP7vmd6RFs5m43A3ZfyQ",
+  },
+
   openGraph: {
     title: "CRSL Comparador de Energía",
     description:
@@ -28,7 +32,7 @@ export const metadata: Metadata = {
     siteName: "CRSL Comparador de Energía",
     images: [
       {
-        url: "https://cronosll-comparador-energia-luz-gas.vercel.app/logo.png",
+        url: "https://cronossl-comparador-energia-luz-gas.vercel.app/logo.png",
         width: 350,
         height: 350,
         alt: "CRSL Comparador de Energía",
@@ -46,10 +50,12 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+      </body>
     </html>
   );
 }
