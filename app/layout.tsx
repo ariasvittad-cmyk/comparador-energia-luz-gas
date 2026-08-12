@@ -22,8 +22,11 @@ export const metadata: Metadata = {
   },
 
   verification: {
-    google: "rhCWrEko4K7RKt91Rr0SN2mIP7vmd6RFs5m43A3ZfyQ",
+  google: "rhCWrEko4K7RKt91Rr0SN2mIP7vmd6RFs5m43A3ZfyQ",
+  other: {
+    "msvalidate.01": "AEF3B7601FD0D611B517883B2683731E",
   },
+},
 
   openGraph: {
     title: "CRSL Comparador de Energía",
