@@ -13,36 +13,88 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CRSL Comparador de Energía",
+  metadataBase: new URL(
+    "https://cronossl-comparador-energia-luz-gas.vercel.app"
+  ),
+
+  title: {
+    default: "CRSL Comparador de Energía",
+    template: "%s | CRSL Comparador de Energía",
+  },
+
   description:
-    "Comparamos tu tarifa actual y te decimos cuánto puedes ahorrar cada mes.",
+    "Compara tu tarifa de luz y gas y descubre cuánto puedes ahorrar cada mes.",
+
+  keywords: [
+    "comparador de energía",
+    "comparador de luz",
+    "comparador de gas",
+    "ahorrar en luz",
+    "ahorrar en gas",
+    "tarifa de luz",
+    "tarifa de gas",
+    "comparador tarifas",
+  ],
+
+  authors: [
+    {
+      name: "CRSL Comparador de Energía",
+    },
+  ],
+
+  creator: "CRSL Comparador de Energía",
 
   icons: {
     icon: "/logo.png",
   },
 
-  verification: {
-  google: "rhCWrEko4K7RKt91Rr0SN2mIP7vmd6RFs5m43A3ZfyQ",
-  other: {
-    "msvalidate.01": "AEF3B7601FD0D611B517883B2683731E",
+  alternates: {
+    canonical: "/",
   },
-},
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+
+  verification: {
+    google: "rhCWrEko4K7RKt91Rr0SN2mIP7vmd6RFs5m43A3ZfyQ",
+    other: {
+      "msvalidate.01": "AEF3B7601FD0D611B517883B2683731E",
+    },
+  },
 
   openGraph: {
-    title: "CRSL Comparador de Energía",
-    description:
-      "Comparamos tu tarifa actual y te decimos cuánto puedes ahorrar cada mes.",
+    type: "website",
+    locale: "es_ES",
+    url: "/",
     siteName: "CRSL Comparador de Energía",
+
+    title: "CRSL Comparador de Energía",
+
+    description:
+      "Compara tu tarifa de luz y gas y descubre cuánto puedes ahorrar cada mes.",
+
     images: [
       {
-        url: "https://cronossl-comparador-energia-luz-gas.vercel.app/logo.png",
+        url: "/logo.png",
         width: 350,
         height: 350,
         alt: "CRSL Comparador de Energía",
       },
     ],
-    locale: "es_ES",
-    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "CRSL Comparador de Energía",
+    description:
+      "Compara tu tarifa de luz y gas y descubre cuánto puedes ahorrar cada mes.",
+    images: ["/logo.png"],
   },
 };
 
